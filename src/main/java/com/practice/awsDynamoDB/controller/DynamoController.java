@@ -2,6 +2,7 @@ package com.practice.awsDynamoDB.controller;
 
 import java.util.List;
 
+import com.practice.awsDynamoDB.model.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,13 @@ public class DynamoController {
 	public List<SongsPojo> getMusicById(@RequestParam String songId) throws Exception {
 		System.out.println("Controller called");
 		return service.getMusicById(songId);
+	}
+
+	@RequestMapping(value="/getTemplateById", method = {RequestMethod.GET},produces = "application/json")
+	@ResponseBody
+	public List<Template> getTemplateById(@RequestParam String ui_key) throws Exception {
+		System.out.println("Controller called");
+		return service.getTemplateByKey(ui_key);
 	}
 	
 	@RequestMapping(value="/getMusicByName", method = {RequestMethod.GET},produces = "application/json")
